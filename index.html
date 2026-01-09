@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>我的内容平台</title>
+<title>内容资源站</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -20,30 +20,57 @@
 <main>
     <section>
         <h2>免费内容</h2>
-        <div class="card-container">
-            <div class="card">
-                <video width="100%" controls>
-                    <source src="content/free1.mp4" type="video/mp4">
-                </video>
-                <div class="card-title">免费视频 1</div>
-            </div>
-        </div>
+        <div class="card-container" id="freeContent"></div>
     </section>
 
     <section>
         <h2>收费内容</h2>
-        <div class="card-container">
-            <div class="card">
-                <video width="100%" controls>
-                    <source src="content/paid1.mp4" type="video/mp4">
-                </video>
-                <div class="card-title">收费视频 1</div>
-                <button class="buy-btn" onclick="buyContent('paid1.mp4')">购买</button>
-            </div>
-        </div>
+        <div class="card-container" id="paidContent"></div>
     </section>
 </main>
 
 <script src="script.js"></script>
+<script>
+// 示例数据，图文内容
+const freeContents = [
+    {type:'video', title:'免费视频 1', file:'free1.mp4'},
+    {type:'article', title:'免费图文 1', file:'article1.html', img:'img1.jpg'}
+];
+const paidContents = [
+    {type:'video', title:'收费视频 1', file:'paid1.mp4'},
+    {type:'article', title:'收费图文 1', file:'article2.html', img:'img1.jpg'}
+];
+
+// 渲染函数
+function renderContent(list, containerId, isPaid){
+    const container = document.getElementById(containerId);
+    list.forEach(item=>{
+        const card = document.createElement('div');
+        card.className = 'card';
+
+        if(item.type==='video'){
+            card.innerHTML = `<video width="100%" controls>
+                <source src="content/${item.file}" type="video/mp4">
+            </video><div class="card-title">${item.title}</div>`;
+        } else if(item.type==='article'){
+            card.innerHTML = `<img src="content/${item.img}" alt="" width="100%">
+            <div class="card-title">${item.title}</div>`;
+        }
+
+        if(isPaid){
+            const btn = document.createElement('button');
+            btn.className = 'buy-btn';
+            btn.innerText = '购买';
+            btn.onclick = ()=>buyContent(item.file);
+            card.appendChild(btn);
+        }
+
+        container.appendChild(card);
+    });
+}
+
+renderContent(freeContents, 'freeContent', false);
+renderContent(paidContents, 'paidContent', true);
+</script>
 </body>
 </html>
