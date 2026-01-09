@@ -1,7 +1,7 @@
 /* Reset */
 * { margin:0; padding:0; box-sizing:border-box; }
 
-/* 全局 */
+/* Body */
 body { font-family: "Helvetica Neue", Arial, sans-serif; background:#f5f5f5; color:#333; }
 a { text-decoration:none; color:#333; }
 main { padding:20px; max-width:1200px; margin:0 auto; }
@@ -20,9 +20,10 @@ section h2 { font-size:20px; margin-bottom:15px; border-left:4px solid #f39c12; 
 .card-container { display:flex; flex-wrap:wrap; gap:20px; }
 
 /* 单个 Card */
-.card { background:#fff; border-radius:10px; box-shadow:0 4px 10px rgba(0,0,0,0.1); overflow:hidden; width:300px; padding:10px; display:flex; flex-direction:column; }
-.card-title { font-size:16px; font-weight:bold; margin:10px 0; text-align:center; }
-.buy-btn { background:#f39c12; border:none; color:#fff; padding:8px 12px; border-radius:5px; cursor:pointer; transition:0.3s; font-weight:bold; }
+.card { background:#fff; border-radius:10px; box-shadow:0 4px 10px rgba(0,0,0,0.1); overflow:hidden; width:300px; display:flex; flex-direction:column; }
+.card img { border-bottom:1px solid #eee; }
+.card-title { font-size:16px; font-weight:bold; margin:10px; text-align:center; }
+.buy-btn { background:#f39c12; border:none; color:#fff; padding:8px 12px; border-radius:5px; cursor:pointer; margin:0 10px 10px 10px; transition:0.3s; font-weight:bold; }
 .buy-btn:hover { background:#d35400; }
 
 /* Responsive */
