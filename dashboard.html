@@ -18,14 +18,20 @@ if(!username) window.location.href = 'login.html';
 
 function loadPurchased(){
     const purchased = JSON.parse(localStorage.getItem('purchased')) || [];
-    const list = document.getElementById('purchasedList');
-    list.innerHTML = '';
+    const container = document.getElementById('purchasedList');
+    container.innerHTML = '';
+
     purchased.forEach(file=>{
-        const div = document.createElement('div');
-        div.className = 'card';
-        div.innerHTML = `${file} <video width="100%" controls>
-        <source src="content/${file}" type="video/mp4"></video>`;
-        list.appendChild(div);
+        const card = document.createElement('div');
+        card.className = 'card';
+        if(file.endsWith('.mp4')){
+            card.innerHTML = `${file}<video width="100%" controls>
+            <source src="content/${file}" type="video/mp4"></video>`;
+        } else if(file.endsWith('.html')){
+            card.innerHTML = `<iframe src="content/${file}" width="100%" height="200px" style="border:none;"></iframe>
+            <div class="card-title">${file}</div>`;
+        }
+        container.appendChild(card);
     });
 }
 loadPurchased();
