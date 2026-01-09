@@ -7,8 +7,10 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<h2>我的已购买内容</h2>
-<div id="purchasedList"></div>
+<div class="dashboard-container">
+    <h2>我的已购买内容</h2>
+    <div id="purchasedList" class="card-container"></div>
+</div>
 
 <script>
 const username = localStorage.getItem('username');
@@ -20,7 +22,8 @@ function loadPurchased(){
     list.innerHTML = '';
     purchased.forEach(file=>{
         const div = document.createElement('div');
-        div.innerHTML = `${file} <video width="300" controls>
+        div.className = 'card';
+        div.innerHTML = `${file} <video width="100%" controls>
         <source src="content/${file}" type="video/mp4"></video>`;
         list.appendChild(div);
     });
