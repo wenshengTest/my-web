@@ -33,11 +33,11 @@
 <script>
 // 示例数据，图文内容
 const freeContents = [
-    {type:'video', title:'免费视频 1', file:'free1.mp4'},
+    //{type:'video', title:'免费视频 1', file:'free1.mp4'},
     {type:'article', title:'免费图文 1', file:'article1.html', img:'img1.jpg'}
 ];
 const paidContents = [
-    {type:'video', title:'收费视频 1', file:'paid1.mp4'},
+    //{type:'video', title:'收费视频 1', file:'paid1.mp4'},
     {type:'article', title:'收费图文 1', file:'article2.html', img:'img1.jpg'}
 ];
 
@@ -48,11 +48,12 @@ function renderContent(list, containerId, isPaid){
         const card = document.createElement('div');
         card.className = 'card';
 
-        if(item.type==='video'){
-            card.innerHTML = `<video width="100%" controls>
-                <source src="content/${item.file}" type="video/mp4">
-            </video><div class="card-title">${item.title}</div>`;
-        } else if(item.type==='article'){
+      //  if(item.type==='video'){
+        //    card.innerHTML = `<video width="100%" controls>
+        //        <source src="content/${item.file}" type="video/mp4">
+       //     </video><div class="card-title">${item.title}</div>`;
+        //} else 
+        if(item.type==='article'){
             card.innerHTML = `<img src="content/${item.img}" alt="" width="100%">
             <div class="card-title">${item.title}</div>`;
         }
@@ -74,3 +75,4 @@ renderContent(paidContents, 'paidContent', true);
 </script>
 </body>
 </html>
+
